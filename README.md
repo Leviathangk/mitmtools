@@ -9,6 +9,12 @@ mitmtools 是根据 mitmproxy 封装的工具库
 - 移除部分响应内容
 - hook 注入
 
+安装
+
+```
+pip install mitmtools
+```
+
 # 替换响应文件
 
 - ReplaceFileByUrl: 通过 url 完全匹配，替换响应文件
@@ -52,18 +58,23 @@ HookByJsUrl(url='', filepath='./static/hookfile.js')
 ```
 
 ## 注意
-html 注入属于 xss 攻击，部分会有 csp 防护导致 script 不会执行，从而 hook 失败  
+
+html 注入属于 xss 攻击，部分会有 csp 防护导致 script 不会执行，从而 hook 失败
 
 友情提醒：任何注入都可能被检测！
 
 # 查看
+
 如果只是想查看请求过程的话，直接使用 MitmproxyBase
+
 ```
 MitmproxyBase()
 ```
 
 # 执行
+
 将需要执行的方法单独放一个 .py 文件，并放在 addons 列表中，如下：
+
 ```
 addons = [
     MitmproxyBase(),
@@ -83,7 +94,9 @@ addons = [
 ]
 
 ```
+
 随后调用如下代码，或者自己通过 mitmproxy 命令行命令自行启动
+
 ```
 from mitmtools.start import execute
 
