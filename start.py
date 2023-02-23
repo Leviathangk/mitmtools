@@ -8,7 +8,7 @@ from mitmproxy.tools.main import mitmdump, mitmweb
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
-def execute(filepath: str, port: int = 8866, args: dict = None):
+def execute(filepath: str, port: int = 8866, args: str = ''):
     """
     通过本地文件的形式启动
 
@@ -17,20 +17,12 @@ def execute(filepath: str, port: int = 8866, args: dict = None):
     :param args: 其余参数
     :return:
     """
-    extend_list = []
-
-    if args:
-        for k, v in args.items():
-            extend_list.append(str(k))
-            extend_list.append(str(v))
-
-    command = ['-p', str(port), '-s', filepath]
-    command.extend(extend_list)
+    command = ['-p', str(port), '-s', filepath, args]
 
     mitmdump(command)
 
 
-def execute_web(port: int = 8866, args: dict = None):
+def execute_web(port: int = 8866, args: str = ''):
     """
     以 Web 页面的形式显示
 
@@ -38,14 +30,6 @@ def execute_web(port: int = 8866, args: dict = None):
     :param args: 其余参数
     :return:
     """
-    extend_list = []
-
-    if args:
-        for k, v in args.items():
-            extend_list.append(str(k))
-            extend_list.append(str(v))
-
-    command = ['-p', str(port)]
-    command.extend(extend_list)
+    command = ['-p', str(port), args]
 
     mitmweb(command)

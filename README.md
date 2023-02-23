@@ -119,3 +119,8 @@ from mitmtools.start import execute, execute_web
 execute(filepath='xxx.py', port=8866) # 有其它命令都可以通过 args 传
 execute_web(port=8866, args={'-s':filepath})    # 有其它命令都可以通过 args 传
 ```
+
+# 常用启动参数
+```
+--ssl-insecure
+```
