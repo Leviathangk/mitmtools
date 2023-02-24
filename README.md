@@ -116,11 +116,18 @@ addons = [
 ```
 from mitmtools.start import execute, execute_web
 
-execute(filepath='xxx.py', port=8866) # 有其它命令都可以通过 args 传
-execute_web(port=8866, args={'-s':filepath})    # 有其它命令都可以通过 args 传
+execute(
+    filepath='handler.py',
+    port=8866,
+    args=['--ssl-insecure', '--mode', 'upstream:http://127.0.0.1:26766']
+)  # 有其它命令都可以通过 args 传
+
+execute_web(port=8866)    # 有其它命令都可以通过 args 传
 ```
 
 # 常用启动参数
+
 ```
---ssl-insecure
+--ssl-insecure                          # 禁用 ssl 验证
+--mode upstream:http://127.0.0.1:1111/  # 设置代理
 ```
